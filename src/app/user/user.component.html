@@ -1,0 +1,68 @@
+<div class="user-container">
+  <div class="user-form">
+
+    <form>
+      <div>
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" [(ngModel)]="user.phoneNumber" name="phoneNumber" value="event.phoneNumber" required />
+      </div>
+      <div>
+        <label for="age">Age:</label>
+        <input type="text" id="age" [(ngModel)]="user.age" name="age" value="user.age" required />
+      </div>
+      <div>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" [(ngModel)]="user.firstName" name="firstName" value="user.firstName" required />
+      </div>
+      <div>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" [(ngModel)]="user.lastName" name="lastName" value="user.lastName" required />
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" [(ngModel)]="user.email" name="email" value="user.email" required />
+      </div>
+      <div>
+
+        <button type="submit" name="add_user" value="users" (click)="user.id ? updateUserForm(user) : addUserForm()">{{user.id ? "update" : "add"}}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="user-list">
+
+    <div>
+      <form (click)="getUser()">
+        <input type="text" name="id" [(ngModel)]="user.id" required />
+      </form>
+    </div>
+    <div class="user-list-container">
+      <div *ngFor="let user of users">
+
+
+
+        <p>{{user.phoneNumber}}</p>
+        <p>{{user.age}}</p>
+        <p>{{user.firstName}}</p>
+        <p>{{user.lastName}}</p>
+        <p>{{user.email}}</p>
+
+      
+
+
+
+      <button (click)="prepareForUpdateForm(user)">Edit</button>
+      <button (click)="deleteUserForm(user.id)">Delete</button>
+
+
+      <button (click)="onAdd(user)">add</button>
+      <button (click)="onRemove(user)">remove</button>
+
+
+    </div>
+
+  </div>
+
+  </div>
+
+</div>

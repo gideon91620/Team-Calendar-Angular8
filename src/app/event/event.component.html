@@ -1,0 +1,66 @@
+<div class="event-container">
+
+  <div class="event-form">
+    <form>
+      <div>
+        <label for="eventName">Event Name:</label>
+        <input type="text" id="eventName" [(ngModel)]="event.name" name="name" value="event.name" required />
+      </div>
+      <div>
+        <label for="eventType">Event Type:</label>
+        <select id="eventType" [(ngModel)]="event.type" name="type" required>
+          <option value="practice">Practice</option>
+          <option value="game">Game</option>
+          <option value="meeting">Meeting</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="eventLocation">Event Location:</label>
+        <input type="text" id="eventLocation" [(ngModel)]="event.location" name="location" value="event.location" required />
+      </div>
+      <div>
+        <label for="eventDate">Event Date:</label>
+        <input type="text" id="eventDate" [(ngModel)]="event.date" name="date" value="event.dated" required />
+      </div>
+      <div>
+        <label for="eventTime">Event Time:</label>
+        <input type="text" id="eventTime" [(ngModel)]="event.time" name="time" value="event.time" required />
+      </div>
+      <div>
+        <label for="eventReason">Event Reason:</label>
+        <input type="text" id="eventReason" [(ngModel)]="event.reason" name="reason" value="event.reason" required />
+      </div>
+      <div>
+
+        <button type="submit" name="add_event" value="events" (click)="event.id ? updateEventForm(event) : addEventForm()">{{event.id ? "update" : "add"}}</button>
+      </div>
+
+
+
+    </form>
+
+  </div>
+
+  <div class="event-list">
+
+    <div>
+      <form (click)="getEvent()">
+        <input type="text" name="id" [(ngModel)]="event.id" required />
+      </form>
+    </div>
+
+    <div *ngFor="let event of events">
+      <p>Name: {{event.name}}</p>
+      <p>Type: {{event.type}}</p>
+      <p>Location: {{event.location}}</p>
+      <p>Date: {{event.date}}</p>
+      <p>Time: {{event.time}}</p>
+      <p>Reason: {{event.reason}}</p>
+      <button (click)="prepareForUpdateForm(event)">Edit</button>
+      <button (click)="deleteEventForm(event.id)">Delete</button>
+    </div>
+
+  </div>
+
+  </div>
